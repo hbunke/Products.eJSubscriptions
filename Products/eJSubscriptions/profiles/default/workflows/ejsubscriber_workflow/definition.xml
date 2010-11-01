@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="ejsubscriber_workflow"
+             title="ejSubscriber Workflow" description=""
+             state_variable="review_state"
+             initial_state="waiting">
+
+
+
+
+
+             

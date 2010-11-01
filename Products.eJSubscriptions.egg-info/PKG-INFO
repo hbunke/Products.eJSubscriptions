@@ -39,58 +39,73 @@ Description: .. contents::
         Detailed Documentation
         **********************
         
-        Introduction
-        ============
+        /Plone/subscriptions
         
-        This is a full-blown functional test. The emphasis here is on testing what
-        the user may input and see, and the system is largely tested as a black box.
-        We use PloneTestCase to set up this test as well, so we have a full Plone site
-        to play with. We *can* inspect the state of the portal, e.g. using
-        self.portal and self.folder, but it is often frowned upon since you are not
-        treating the system as a black box. Also, if you, for example, log in or set
-        roles using calls like self.setRoles(), these are not reflected in the test
-        browser, which runs as a separate session.
+        ##
         
-        Being a doctest, we can tell a story here.
+        Dear subscriber,
         
-        First, we must perform some setup. We use the testbrowser that is shipped
-        with Five, as this provides proper Zope 2 integration. Most of the
-        documentation, though, is in the underlying zope.testbrower package.
+        your e-mail <email> has been added.
         
-        >>> from Products.Five.testbrowser import Browser
-        >>> browser = Browser()
-        >>> portal_url = self.portal.absolute_url()
+        Please visit <activate_url> to activate your and edit your subscription.
         
-        The following is useful when writing and debugging testbrowser tests. It lets
-        us see all error messages in the error_log.
+        Best regards
+        Your eJournal Team
         
-        >>> self.portal.error_log._ignored_exceptions = ()
+        ##
         
-        With that in place, we can go to the portal front page and log in. We will
-        do this using the default user from PloneTestCase:
+        eJournal: Added
         
-        >>> from Products.PloneTestCase.setup import portal_owner, default_password
+        ##
         
-        Because add-on themes or products may remove or hide the login portlet, this test will use the login form that comes with plone.
+        Dear subscriber,
         
-        >>> browser.open(portal_url + '/login_form')
-        >>> browser.getControl(name='__ac_name').value = portal_owner
-        >>> browser.getControl(name='__ac_password').value = default_password
-        >>> browser.getControl(name='submit').click()
+        your e-mail <email> has been activated. You will now notified about new informations.
         
-        Here, we set the value of the fields on the login form and then simulate a
-        submit click.  We then ensure that we get the friendly logged-in message:
+        To edit you subscripton please visit <edit_url>.
+        To delete your subscripiton please visit <delete_url>.
         
-        >>> "You are now logged in" in browser.contents
-        True
+        Best regards
+        Your eJournal Team
         
-        Finally, let's return to the front page of our site before continuing
+        ##
         
-        >>> browser.open(portal_url)
+        eJournal: Activated
         
-        -*- extra stuff goes here -*-
+        ##
         
+        Dear subscriber,
         
+        attached you will find new articles corresponding to your entered JEL classes
+        
+        <changed_papers>
+        
+        To edit you subscripton please visit <edit_url>.
+        To delete your subscripiton please visit <delete_url>.
+        
+        Best regards
+        Your eJournal Team
+        
+        ##
+        
+        New Articles in economics
+        
+        ##
+        
+        Dear subscriber,
+        
+        attached you will find new articles corresponding to your entered JEL classes
+        
+        <changed_papers>
+        
+        To edit you subscripton please visit <edit_url>.
+        
+        Best regards
+        Your eJournal Team
+        
+        ##
+        
+        New Articles in economics
         Contributors
         ************
         
