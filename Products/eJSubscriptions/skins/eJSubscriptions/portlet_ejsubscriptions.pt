@@ -1,0 +1,38 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      i18n:domain="plone">
+<body>
+<div metal:define-macro="portlet">
+
+    <dl class="portlet" id="portlet-ejsubscriptions">
+
+        <dt class="portletHeader">
+          <span class="portletTopLeft"></span>
+          <span>Subscriptions</span>
+          <span class="portletTopRight"></span>
+        </dt>
+
+        <dd class="portletItem even">          
+          <form tal:attributes="action context/absolute_url"
+                method="post">  
+            <input onclick="this.value=''"
+                   type="text" 
+                   id="email"
+                   name="email"
+                   value="Your e-mail"
+                   class="ejsubscriptions_input" 
+                   i18n:attributes="value easynewsletter_input_value;" />
+
+            <input type="submit"
+                   name="add_subscriber:method"
+                   value="Add"
+                   i18n:attributes="value ejsubscriptions_button_label;"
+                   class="ejsubscriptions_button" />
+          </form>          
+        </dd>
+
+    </dl>
+
+</div>
+</body>
+</html>

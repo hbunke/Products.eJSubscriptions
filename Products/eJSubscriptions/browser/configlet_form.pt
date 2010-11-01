@@ -1,0 +1,186 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="eJSubscriptions">
+  <body>
+
+    <metal:main fill-slot="prefs_configlet_main">
+      <div metal:use-macro="here/document_actions/macros/document_actions">
+          Document actions (print, sendto etc)
+      </div>
+
+      <h1 class="documentFirstHeading"
+          i18n:translate="easycommenting_label_configTitle">
+        Setup Subscriptions
+      </h1>
+
+      <a class="link-parent" href=""
+         tal:attributes="href string: $portal_url/plone_control_panel"
+         i18n:domain="plone"
+         i18n:translate="label_up_to_plone_setup">
+          Up to Plone Setup
+      </a>
+
+      <form action="."
+            tal:attributes="action context/absolute_url" 
+            method="post"
+            enctype="multipart/form-data"
+            style="float:left">
+
+         <div class="field">            
+            <label for="path_to_subscriptions"
+                   i18n:translate="eJournal_label_path_to_subscriptions"> 
+                   Path To Subscriptions</label>                               
+                   
+            <div i18n:translate="eJournal_description_path_to_subscriptions" 
+                 class="formHelp">Folder within subscribers are created.</div>
+
+            <input name="path_to_subscriptions"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('path_to_subscriptions')" />                   
+         </div>
+
+         <div class="field">            
+            <label for="added_subscriber_subject"
+                   i18n:translate="eJournal_label_added_subscriber_subject"> 
+                   Added Subscriber Subject</label>                               
+                   
+            <div i18n:translate="eJournal_description_added_subscriber_subject" 
+                 class="formHelp">Will be used as subject for the added subscriber mail.</div>
+
+            <input name="added_subscriber_subject"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('added_subscriber_subject')" />                   
+         </div>
+
+         <div class="field">            
+            <label for="added_subscriber_email"
+                   i18n:translate="eJournal_label_added_subscriber_email"> 
+                   Added Subscriber E-Mail</label>                               
+                   
+            <div i18n:translate="eJournal_description_added_subscriber_email" 
+                 class="formHelp">Will be used as text for the added subscriber mail.</div>
+
+            <textarea name="added_subscriber_email"
+                      rows="6"
+                      tal:content="python:view.getFieldValue('added_subscriber_email')">
+            </textarea>
+         </div>
+
+
+         <div class="field">            
+            <label for="activated_subscriber_subject"
+                   i18n:translate="eJournal_label_activated_subscriber_subject"> 
+                   Activated Subscriber Subject</label>                               
+                   
+            <div i18n:translate="eJournal_description_activated_subscriber_subject" 
+                 class="formHelp">Will be used as subject for the activated subscriber mail.</div>
+
+            <input name="activated_subscriber_subject"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('activated_subscriber_subject')" />                   
+         </div>
+
+
+         <div class="field">            
+            <label for="activated_subscriber_email"
+                   i18n:translate="eJournal_label_activated_subscriber_email"> 
+                   Activated Subscriber E-Mail</label>                                                  
+            <div i18n:translate="eJournal_description_activated_subscriber_email" 
+                 class="formHelp">Will be used as text for the activated subscriber mail.</div>
+
+            <textarea name="activated_subscriber_email"
+                      rows="6"
+                      tal:content="python:view.getFieldValue('activated_subscriber_email')">
+            </textarea>
+         </div>
+
+         <div class="field">            
+            <label for="changed_subscriptions_subject"
+                   i18n:translate="eJournal_label_changed_subscriptions_subject"> 
+                   Changed Papers Notification for Anonymous Subscribers Subject.</label>
+                   
+            <div i18n:translate="eJournal_description_changed_subscriptions_subject" 
+                 class="formHelp">Will be used as subject for changed subscriptions mail for anonymous subscribers.</div>
+
+            <input name="changed_subscriptions_subject"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('changed_subscriptions_subject')" />                   
+         </div>
+
+         <div class="field">            
+            <label for="changed_subscriptions_email"
+                   i18n:translate="eJournal_label_changed_subscriptions_email"> 
+                   Changed Papers Notification for Anonymous Subscribers E-Mail.</label>                                                  
+            <div i18n:translate="eJournal_description_changed_subscriptions_email" 
+                 class="formHelp">Will be used as text for changed subscriptions mail for anonymous subscribers.</div>
+
+            <textarea name="changed_subscriptions_email"
+                      rows="6"
+                      tal:content="python:view.getFieldValue('changed_subscriptions_email')">
+            </textarea>
+         </div>
+
+         <div class="field">            
+            <label for="changed_member_subscriptions_subject"
+                   i18n:translate="eJournal_label_changed_member_subscriptions_subject"> 
+                   Changed Papers Notification for Registered Subscribers Subject.</label>
+                   
+            <div i18n:translate="eJournal_description_changed_member_subscriptions_subject" 
+                 class="formHelp">Will be used as subject for changed subscriptions mail for registered subscribers.</div>
+
+            <input name="changed_member_subscriptions_subject"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('changed_member_subscriptions_subject')" />                   
+         </div>
+
+         <div class="field">            
+            <label for="changed_member_subscriptions_email"
+                   i18n:translate="eJournal_label_changed_changed_member_subscriptions_email"> 
+                   Changed Papers Notification For Registered Subscribers.</label>                                                  
+
+            <div i18n:translate="eJournal_description_changed_member_subscriptions_email" 
+                 class="formHelp">Will be used as text for changed subscriptions mail for registered subscribers.</div>
+
+            <textarea name="changed_member_subscriptions_email"
+                      rows="6"
+                      tal:content="python:view.getFieldValue('changed_member_subscriptions_email')">
+            </textarea>
+         </div>
+
+         <div class="field">            
+            <label for="last_run"
+                   i18n:translate="eJournal_label_last_run"> 
+                   Last Run For Anonymous.</label>
+
+            <div class="formHelp"></div>
+                               
+            <input name="last_run"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('last_run')" />                   
+         </div>
+
+         <div class="field">            
+            <label for="last_run_member"
+                   i18n:translate="eJournal_label_last_run_member"> 
+                   Last Run For Members.</label>
+
+            <div class="formHelp"></div>
+                   
+            <input name="last_run_member"
+                   size="80"
+                   tal:attributes="value python:view.getFieldValue('last_run_member')" />                   
+         </div>
+         
+         <input class="context"  
+                id="edit-configlet"
+                name="ejsubscriptions_edit_configlet:method" 
+                value="Save" 
+                type="submit"
+                i18n:attributes="value" />              
+       </form>
+      
+    </metal:main>
+    
+  </body>
+</html>

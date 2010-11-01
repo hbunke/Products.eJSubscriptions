@@ -1,0 +1,73 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:five="http://namespaces.zope.org/five"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+<five:registerPackage package="." initialize=".initialize" />
+
+
+    <browser:page
+        for = "*"            
+        name = "add_subscriber"
+        class = ".browser.PortletView"
+        attribute ="addSubscriber"         
+  	    permission = "zope2.Public" />
+
+    <browser:page
+        for = ".interfaces.IeJSubscriber"            
+        name = "subscriberView"
+        class = ".browser.SubscriberView"
+        allowed_interface =".browser.ISubscriberView"         
+  	    permission = "zope2.Public" />
+
+    <browser:page
+        for = ".interfaces.IeJSubscriber"            
+        name = "activate"
+        class = ".browser.SubscriberView"
+        attribute ="activate"         
+  	    permission = "zope2.Public" />
+
+    <browser:page
+        for = ".interfaces.IeJSubscriber"            
+        name = "delete"
+        class = ".browser.SubscriberView"
+        attribute ="delete"         
+  	    permission = "zope2.Public" />
+
+    <!-- Note: Subscriber*s*Manager is not SubscriberManager  -->
+    
+    <adapter   
+        for=".interfaces.IeJSubscriptions"
+        provides=".interfaces.ISubscribersManagement"   
+        factory=".adapters.SubscribersManager" />
+
+    <adapter   
+        for=".interfaces.IeJSubscriber"
+        provides=".interfaces.ISubscriberManagement"   
+        factory=".adapters.SubscriberManager" />
+
+    <subscriber
+        for=".events.ISubscriberAdded"
+        handler=".events.sendAddedMail" />
+
+    <subscriber
+        for=".events.ISubscriberActivated"
+        handler=".events.sendActivatedMail" />
+
+     <!-- ============= -->
+     <!-- = Configlet = -->
+     <!-- ============= -->   
+    <browser:page
+        for = "*"            
+        name = "ejsubscriptions_configlet_form"
+        class = ".browser.ConfigletView"
+        permission = "cmf.ManagePortal" 
+        template = "browser/configlet_form.pt"/>
+
+    <browser:page
+        for="*"
+        name="ejsubscriptions_edit_configlet"
+        class=".browser.ConfigletView"        
+        attribute="edit" 
+        permission="cmf.ManagePortal" />
+
+</configure>

@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="">
+  <body>
+
+    <head>
+      <metal:block fill-slot="top_slot">
+        <tal:block tal:define="dummy context/@@eJournalView/disableBorder" />
+      </metal:block>                   
+    </head>
+
+    <metal:main fill-slot="main">    
+
+      <div metal:use-macro="here/document_actions/macros/document_actions">
+          Document actions (print, sendto etc)
+      </div>
+
+      <h1 class="documentFirstHeading">
+        Alerting Service
+      </h1>
+      
+      <p>
+        For free information per email about the latest discussion papers and articles please add your email adress.
+      </p>
+      
+      <form tal:attributes="action context/absolute_url"
+            method="post">  
+            
+        <input onclick="this.value=''"
+               type="text" 
+               id="email"
+               name="email"
+               value="Your e-mail"
+               class="ejsubscriptions_input" 
+               i18n:attributes="value easynewsletter_input_value;" />
+
+        <input type="submit"
+               name="add_subscriber:method"
+               value="Add"
+               i18n:attributes="value ejsubscriptions_button_label;"
+               class="ejsubscriptions_button" />
+      </form>          
+      
+    </metal:main>
+    
+  </body>
+</html>
