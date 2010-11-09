@@ -1,39 +1,45 @@
-# python imports
-from urllib import quote
-
-# Zope imports 
-import zope                                                              
-from zope.interface import Interface
-        
-# CMF imports
-from Products.CMFCore.utils import getToolByName
-
-# eJSubscriptions
+from zope.interface import Interface, implements
+#from Products.CMFCore.utils import getToolByName
 from Products.eJSubscriptions.interfaces import ISubscribersManagement
-
-# Five imports
 from Products.Five.browser import BrowserView
+from zope.component import getUtility
+from Products.eJSubscriptions.interfaces import ISubscriptionsConf
+from plone.registry.interfaces import IRegistry
+from zope.app.component.hooks import getSite
 
 
 class IPortletView(Interface):
     """Interface, which provides methods for the portlet.
     """
-    def addSubscriber():
+    def add_subscriber():
         """
         """
         
 class PortletView(BrowserView):
     """
-    """    
-    def addSubscriber(self):
+    """  
+    implements(IPortletView)
+
+    def add_subscriber(self):
         """
         """
-        stool = getToolByName(self.context, "ejsubscriptions_tool")
-        folder = stool.path_to_subscriptions
+        #stool = getToolByName(self.context, "ejsubscriptions_tool")
+        registry = getUtility(IRegistry)
+        stool = registry.forInterface(ISubscriptionsConf)
+        
+        #hardcoding the subscriptions folder
+        portal = getSite()
+        if not portal.subscriptions:
+            portal.invokeFactory(id="subscriptions",
+                type_name="eJSubscriptions")
+        folder = portal.subscriptions
+
+        #folder = stool.path_to_subscriptions
         
         # data
         email = self.request.get("email", "")
-        folder = self.context.restrictedTraverse(folder)
+        
+        #folder = self.context.restrictedTraverse(folder)
 
         # add
         sm = ISubscribersManagement(folder)        

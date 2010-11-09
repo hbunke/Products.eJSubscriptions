@@ -1,16 +1,44 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:five="http://namespaces.zope.org/five"
-           xmlns:browser="http://namespaces.zope.org/browser">
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+           xmlns:cmf="http://namespaces.zope.org/cmf">
+
 
 <five:registerPackage package="." initialize=".initialize" />
+                
+                
+<!-- register skins directory -->
+    <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+
+    
+    <genericsetup:registerProfile
+      name="default"
+      title="ejSubscriptions"
+      directory="profiles/default"
+      description="ejournal subscription"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+
+  <include package="plone.app.registry" />
+  <include package="collective.autopermission" />
+
+  <permission id="eJSubscriptions.AddSubscriber" 
+      title="eJSubscriptions: Add Subscriber" />
+
+  <five:registerClass
+      class=".content.eJSubscriber.eJSubscriber"
+      meta_type="eJSubscriber"
+      permission="eJSubscriptions.AddSubscriber" />
 
 
     <browser:page
         for = "*"            
         name = "add_subscriber"
         class = ".browser.PortletView"
-        attribute ="addSubscriber"         
-  	    permission = "zope2.Public" />
+        attribute ="add_subscriber"
+  	    permission = "eJSubscriptions.AddSubscriber" />
 
     <browser:page
         for = ".interfaces.IeJSubscriber"            
@@ -55,7 +83,7 @@
 
      <!-- ============= -->
      <!-- = Configlet = -->
-     <!-- ============= -->   
+     <!-- =============   
     <browser:page
         for = "*"            
         name = "ejsubscriptions_configlet_form"
@@ -69,5 +97,15 @@
         class=".browser.ConfigletView"        
         attribute="edit" 
         permission="cmf.ManagePortal" />
+-->
+
+     <!-- Control Panel -->
+    <browser:page
+        name="ejsubscriptions_settings"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".controlpanel.SubscriptionsControlPanel"
+        permission="cmf.ManagePortal" 
+        />
+
 
 </configure>

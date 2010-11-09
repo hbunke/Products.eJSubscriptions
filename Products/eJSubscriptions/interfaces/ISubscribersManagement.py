@@ -4,7 +4,7 @@ import zope
 class ISubscribersManagement(zope.interface.Interface):
     """
     """
-    def addSubcriber(email):
+    def addSubscriber(email):
         """Add a new subscriber
         """
         

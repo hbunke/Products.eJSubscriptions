@@ -42,7 +42,7 @@ class SubscribersManager:
         if self._isAlreadyRegistered(email) == True:
             self.status_message = ALREADY_REGISTERED
             return False
-
+        
         # Add Subscriber
         new_id = self._generateUniqueId()
         self.context.invokeFactory(id=new_id, type_name="eJSubscriber")
@@ -61,7 +61,8 @@ class SubscribersManager:
         return [s.getEmail() for s in self.context.objectValues("eJSubscriber")]
     
     
-    # Privates   
+    
+
     def _isValid(self, email):
         """
         """

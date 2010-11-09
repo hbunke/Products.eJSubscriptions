@@ -38,11 +38,13 @@ __docformat__ = 'plaintext'
 # Classes
 import IeJSubscriptions
 import IeJSubscriber
+import ISubscriptionsConf
 
 ##code-section init-module-footer #fill in your manual code here
 from ISubscribersManagement import ISubscribersManagement
 from ISubscriberManagement import ISubscriberManagement
 from IeJSubscriptions import IeJSubscriptions
 from IeJSubscriber import IeJSubscriber
+from ISubscriptionsConf import ISubscriptionsConf
 ##/code-section init-module-footer
 

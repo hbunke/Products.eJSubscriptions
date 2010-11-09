@@ -1,8 +1,12 @@
-# Zope imports
 import zope
 
 # CMFCore imports
 from Products.CMFCore.utils import getToolByName
+from zope.component import getUtility
+from Products.eJSubscriptions.interfaces import ISubscriptionsConf
+from plone.registry.interfaces import IRegistry
+
+
 
 class ISubscriberAdded(zope.interface.Interface):
     """A marker interface for the event: subscriber has been added.
@@ -38,35 +42,38 @@ def sendAddedMail(event):
     """
     object = event.object
 
-    stool = getToolByName(object, "ejsubscriptions_tool")
+    registry = getUtility(IRegistry)
+    stool = registry.forInterface(ISubscriptionsConf)
+
+    #XXX Beware when moving ejtool to utility!!!
     ejtool = getToolByName(object, "ejournal_tool")    
     
-    message = stool.added_subscriber_email
-
+    message = stool.added_subscriber_email.encode('utf-8')
     message = message.replace("<email>", object.getEmail())
     message = message.replace("<activate_url>", "%s/activate" % object.absolute_url())
         
-    header  = "from: %s\n" % ejtool.notification_from
-    header += "to: %s\n"  % object.getEmail()
-    header += "subject: %s\n\n" % stool.added_subscriber_subject
-    message = header + message
-    
-    try:
-        # Need context of object here to find MailHost
-        object.MailHost.send(message)
-    except:
-        # catch and do nothing, so that the user doesn't notice an error
-        pass
+    header  = "From: %s\n" % ejtool.notification_from
+    header += "To: %s\n"  % object.getEmail()
+    header += "Subject: %s\n" % stool.added_subscriber_subject.encode('utf-8')
+    header += "Content-Type: text/plain; charset=utf-8\n\n"
+
+    mailtext = header+message
+    #import pdb; pdb.set_trace()
+    object.MailHost.send(mailtext)
+   
 
 def sendActivatedMail(event):
     """
     """
     object = event.object
 
-    stool = getToolByName(object, "ejsubscriptions_tool")
-    ejtool = getToolByName(object, "ejournal_tool")
-         
-    message = stool.activated_subscriber_email
+    registry = getUtility(IRegistry)
+    stool = registry.forInterface(ISubscriptionsConf)
+
+    #XXX Beware when moving ejtool to utility!!!
+    ejtool = getToolByName(object, "ejournal_tool")    
+    
+    message = stool.activated_subscriber_email.encode('utf-8')
     
     message = message.replace("<email>", object.getEmail())
     message = message.replace("<edit_url>", object.absolute_url())
@@ -74,12 +81,8 @@ def sendActivatedMail(event):
     
     header  = "from: %s\n" % ejtool.notification_from
     header += "to: %s\n"  % object.getEmail()
-    header += "subject: %s\n\n" % stool.activated_subscriber_subject
+    header += "subject: %s\n" %  stool.activated_subscriber_subject.encode('utf-8')
+    header += "Content-Type: text/plain; charset=utf-8\n\n"
     message = header + message
     
-    try:
-        # Need context of object here to find MailHost
-        object.MailHost.send(message)
-    except:
-        # catch and do nothing, so that the user doesn't notice an error
-        pass
+    object.MailHost.send(message)

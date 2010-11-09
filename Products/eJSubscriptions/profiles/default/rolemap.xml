@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<rolemap>
+  <roles>
+    <role name="Anonymous"/>
+    <role name="Authenticated"/>
+    <role name="Manager"/>
+    <role name="Member"/>
+    <role name="Owner"/>
+  </roles>
+
+    
+  <permissions>
+    <permission name="eJSubscriptions: Add Subscriber" acquire="False">
+      <role name="Authenticated" />
+      <role name="Manager" />
+      <role name="Anonymous" />
+    </permission>
+
+
+   </permissions>
+</rolemap>
