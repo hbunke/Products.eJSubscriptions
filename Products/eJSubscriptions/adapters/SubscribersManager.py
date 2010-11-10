@@ -14,7 +14,7 @@ from Products.CMFCore.utils import getToolByName
 
 # eJournal imports
 from Products.eJSubscriptions.interfaces import ISubscribersManagement
-from Products.eJSubscriptions.AppConfig import VALID, NOT_VALID, ALREADY_REGISTERED
+from Products.eJSubscriptions.config import VALID, NOT_VALID, ALREADY_REGISTERED
 from Products.eJSubscriptions.events import SubscriberAdded
 
 class SubscribersManager:

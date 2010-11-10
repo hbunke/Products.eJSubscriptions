@@ -10,7 +10,7 @@ from Products.CMFCore.utils import getToolByName
 
 # eJSubscriptions imports
 from Products.eJSubscriptions.interfaces import ISubscriberManagement
-from Products.eJSubscriptions.AppConfig import ALREADY_ACTIVATED, ACTIVATED, DELETED
+from Products.eJSubscriptions.config import ALREADY_ACTIVATED, ACTIVATED, DELETED
 from Products.eJSubscriptions.events import SubscriberActivated
 
 class SubscriberManager:

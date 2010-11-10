@@ -1,18 +1,6 @@
-# python imports
-from urllib import quote
-
-# Zope imports 
-import zope                                                              
 from zope.interface import Interface
-
-# CMF imports
 from Products.CMFCore.utils import getToolByName
-
-# eJSubscriptions
 from Products.eJSubscriptions.interfaces import ISubscriberManagement
-from Products.eJSubscriptions.AppConfig import DELETED
-
-# Five imports
 from Products.Five.browser import BrowserView
 
 class ISubscriberView(Interface):
