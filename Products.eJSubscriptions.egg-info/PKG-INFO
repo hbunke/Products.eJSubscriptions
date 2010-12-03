@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: Products.eJSubscriptions
-Version: 2.0.4egg
+Version: 2.0.4
 Summary: UNKNOWN
 Home-page: http://svn.plone.org/svn/collective/
 Author: UNKNOWN
@@ -9,15 +9,15 @@ License: GPL
 Description: .. contents::
         
         .. Note!
-        -----
-        Update the following URLs to point to your:
+           -----
+           Update the following URLs to point to your:
         
-        - code repository
-        - bug tracker
-        - questions/comments feedback mail
-        (do not set a real mail, to avoid spams)
+           - code repository
+           - bug tracker
+           - questions/comments feedback mail
+           (do not set a real mail, to avoid spams)
         
-        Or remove it if not used.
+           Or remove it if not used.
         
         - Code repository: http://svn.somewhere.com/...
         - Questions and comments to somemailing_list
@@ -34,18 +34,18 @@ Description: .. contents::
         ----------------
         
         - Created recipe with ZopeSkel
-        [""]
+          [""]
         
         Detailed Documentation
         **********************
         
         /Plone/subscriptions
         
-        ##
+        ## 
         
-        Dear subscriber,
+        Dear subscriber, 
         
-        your e-mail <email> has been added.
+        your e-mail <email> has been added. 
         
         Please visit <activate_url> to activate your and edit your subscription.
         
@@ -54,11 +54,11 @@ Description: .. contents::
         
         ##
         
-        eJournal: Added
+        eJournal: Added 
         
-        ##
+        ## 
         
-        Dear subscriber,
+        Dear subscriber, 
         
         your e-mail <email> has been activated. You will now notified about new informations.
         
@@ -72,7 +72,7 @@ Description: .. contents::
         
         eJournal: Activated
         
-        ##
+        ## 
         
         Dear subscriber,
         
@@ -86,7 +86,7 @@ Description: .. contents::
         Best regards
         Your eJournal Team
         
-        ##
+        ## 
         
         New Articles in economics
         
@@ -101,9 +101,9 @@ Description: .. contents::
         To edit you subscripton please visit <edit_url>.
         
         Best regards
-        Your eJournal Team
+        Your eJournal Team      
         
-        ##
+        ## 
         
         New Articles in economics
         Contributors
