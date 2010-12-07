@@ -28,6 +28,7 @@ Products/eJSubscriptions/browser/PortletView.py
 Products/eJSubscriptions/browser/SubscriberView.py
 Products/eJSubscriptions/browser/__init__.py
 Products/eJSubscriptions/browser/configure.zcml
+Products/eJSubscriptions/content/__init__.py
 Products/eJSubscriptions/content/eJSubscriber.py
 Products/eJSubscriptions/content/eJSubscriptions.py
 Products/eJSubscriptions/interfaces/ISubscriberManagement.py

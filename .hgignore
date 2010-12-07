@@ -4,4 +4,4 @@ syntax: glob
 
 *.pyc
 dist/
-dist/
+Paste*/

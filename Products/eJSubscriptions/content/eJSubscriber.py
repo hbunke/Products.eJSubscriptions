@@ -6,7 +6,6 @@ from zope.interface import implements
 from Products.eJSubscriptions.interfaces.IeJSubscriber import IeJSubscriber
 from Products.eJSubscriptions.config import *
 
-#from Products.AutocompleteWidget.AutocompleteWidget import AutocompleteWidget
 from Products.CMFCore.utils import getToolByName
 
 schema = Schema((
