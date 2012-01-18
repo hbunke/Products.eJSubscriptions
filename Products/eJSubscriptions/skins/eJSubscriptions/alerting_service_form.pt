@@ -19,12 +19,12 @@
       <h1 class="documentFirstHeading">
         Alerting Service
       </h1>
+
+      <p>For information per email about the latest discussion papers and
+          journal articles please add your email address.</p>
+              
       
-      <p>
-        For free information per email about the latest discussion papers and articles please add your email adress.
-      </p>
-      
-      <form tal:attributes="action context/absolute_url"
+      <form style="float:none; margin-bottom:18px;" tal:attributes="action context/absolute_url"
             method="post">  
             
         <input onclick="this.value=''"
@@ -40,7 +40,14 @@
                value="Add"
                i18n:attributes="value ejsubscriptions_button_label;"
                class="ejsubscriptions_button" />
-      </form>          
+       </form>          
+
+      <p>You can also follow us at <a
+              href="http://twitter.com/ej_economics">Twitter</a>, <a
+              href="https://plus.google.com/104127856397918923246/posts">Google+</a>, or 
+          <a href="http://www.facebook.com/pages/Economics-E-Journal/112331918839374?v=wall">Facebook
+          </a> to be updated on currently published papers.</p>
+
       
     </metal:main>
     
