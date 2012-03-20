@@ -86,8 +86,12 @@
                         Alerting Service
                     </span>    
                 </h1>
+
             </metal:block>    
-        </metal:use_header>    
+            </metal:use_header>    
+            <p>By default, we'll send alerts on all papers. If you'd like to be
+            alerted on papers with certain JELs only, select the them
+            below.</p>
         <metal:use_body use-macro="body_macro" />
         <metal:use_footer use-macro="footer_macro" />
       </metal:main>

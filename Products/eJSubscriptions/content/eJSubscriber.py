@@ -9,12 +9,22 @@ from Products.eJSubscriptions.config import *
 from Products.CMFCore.utils import getToolByName
 
 schema = Schema((
+    
+#   BooleanField(
+#     name="all_jels",
+#     regfield="1",
+#     default=True,
+#     widget=BooleanWidget(
+#       label="On all JEL classes",
+#       description="Check this to get notifications on all new papers",
+#     )
+#   ),
 
     LinesField(
         name='jel',
         widget=InAndOutWidget
         (
-            label=' E-mail alert on new papers with the following JEL classifications',
+            label=' E-mail alert only on new papers with the following JEL classifications',
             description="Select the JELs inside the left box \
                 and then click the arrow to get them into the right box,\
                 which is the actual list.\n",
@@ -25,7 +35,11 @@ schema = Schema((
         vocabulary="_getJEL"
     ),
 
+    
+
 ),
+
+
 )
 
 
