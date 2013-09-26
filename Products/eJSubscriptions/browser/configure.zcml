@@ -5,6 +5,21 @@
 
   <include package="plone.app.contentmenu" />
 
-  <!-- -*- extra stuff goes here -*- -->
+
+<browser:page
+    name="mail_changed_subscriptions"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".notification.View"
+    attribute = "mail_subscriptions"
+    permission = "zope2.Public" />
+
+
+<browser:page
+    name="mail_changed_member_subscriptions"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    class=".notification.View"
+    attribute="mail_member_subscriptions"
+    permission="zope2.Public" />
+
 
 </configure>

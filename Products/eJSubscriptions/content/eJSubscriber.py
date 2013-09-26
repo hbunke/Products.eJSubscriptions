@@ -3,7 +3,7 @@
 from AccessControl import ClassSecurityInfo
 from Products.Archetypes.atapi import *
 from zope.interface import implements
-from Products.eJSubscriptions.interfaces.IeJSubscriber import IeJSubscriber
+from Products.eJSubscriptions.interfaces import IeJSubscriber
 from Products.eJSubscriptions.config import *
 
 from Products.CMFCore.utils import getToolByName

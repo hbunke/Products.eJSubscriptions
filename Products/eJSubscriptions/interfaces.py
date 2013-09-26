@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-# Dr. Hendrik Bunke, h.bunke@zbw.eu
-
 from zope.interface import Interface, Attribute
 from zope import schema
+
 
 class ISubscriptionsConf(Interface):
     """configuration utility for eJSubscriptions. Replaces the oldstyle tool.
@@ -33,12 +31,6 @@ class ISubscriptionsConf(Interface):
             required = True,
             )
     
-    activated_subscriber_email = schema.Text(
-            title = u'Activated Subscriber E-Mail',
-            description = u'Will be used as text for the activated subscriber mail.',
-            required = True,
-            )
-
     changed_subscriptions_subject = schema.TextLine(
             title = u'Changed Papers Notification for Anonymous Subscribers Subject',
             description = u'Will be used as subject for changed subscriptions mail for anonymous subscribers.',
@@ -74,3 +66,49 @@ class ISubscriptionsConf(Interface):
             required = False,
             )
             
+
+class ISubscriberManagement(Interface):
+    """
+    """
+    def activate():
+        """Activates a subscriber 
+        """
+        
+    def delete():
+        """Deletes a subscriber
+        """    
+
+
+class ISubscribersManagement(Interface):
+    """
+    """
+    def addSubscriber(email):
+        """Add a new subscriber
+        """
+        
+    def getSubscribers():
+        """Returns all subscribers
+        """    
+
+
+class IeJSubscriber(Interface):
+    ''' 
+    '''
+
+
+class IeJSubscriptions(Interface):
+    ''' 
+    '''
+
+
+class ISubscriberNotification(Interface):
+    """
+    adapter for mailing new papers to subscribers;
+    was originally in Products.eJournal
+    """
+    
+    def mail_new_papers():
+        """
+        send email to subscribers with abstract, title and url of new articles
+        """
+

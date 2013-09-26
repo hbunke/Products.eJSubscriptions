@@ -21,8 +21,10 @@
       />
 
 
+  <include package=".browser" />  
   <include package="plone.app.registry" />
   <include package="collective.autopermission" />
+
 
   <permission id="eJSubscriptions.AddSubscriber" 
       title="eJSubscriptions: Add Subscriber" />
@@ -72,6 +74,14 @@
         for=".interfaces.IeJSubscriber"
         provides=".interfaces.ISubscriberManagement"   
         factory=".adapters.SubscriberManager" />
+   
+    <!-- this has originally been in Products.eJournal with other
+    names for interface and adapter -->
+    <adapter
+        for="*"
+        provides=".interfaces.ISubscriberNotification"
+        factory=".adapters.mail.SubscriberNotification" />
+        
 
     <subscriber
         for=".events.ISubscriberAdded"
@@ -81,24 +91,7 @@
         for=".events.ISubscriberActivated"
         handler=".events.sendActivatedMail" />
 
-     <!-- ============= -->
-     <!-- = Configlet = -->
-     <!-- =============   
-    <browser:page
-        for = "*"            
-        name = "ejsubscriptions_configlet_form"
-        class = ".browser.ConfigletView"
-        permission = "cmf.ManagePortal" 
-        template = "browser/configlet_form.pt"/>
-
-    <browser:page
-        for="*"
-        name="ejsubscriptions_edit_configlet"
-        class=".browser.ConfigletView"        
-        attribute="edit" 
-        permission="cmf.ManagePortal" />
--->
-
+    
      <!-- Control Panel -->
     <browser:page
         name="ejsubscriptions_settings"
@@ -108,4 +101,5 @@
         />
 
 
+    
 </configure>
