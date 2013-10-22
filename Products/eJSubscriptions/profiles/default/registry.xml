@@ -1,6 +1,31 @@
 <?xml version="1.0"?>
 
 <registry>
- <records interface="Products.eJSubscriptions.interfaces.ISubscriptionsConf" />
+ <!-- we are presetting all text values here, to avoid filling the form 
+ after each portal_setup. 
+ XXX You still MUST set last run dates!!! 
+XXX values with textlines do not work yet.
+-->
+ <records interface="Products.eJSubscriptions.interfaces.ISubscriptionsConf">
+<!--
+    <value key="path_to_subscriptions">/eJournal/subscriptions</value>
+    <value key="added_subscriber_subject">eJournal: Added</value>
+    <value key="added_subscriber_email">Dear subscriber to the alerting service of economics,\r\n\r\nyour e-mail &lt;email&gt; has been added. \r\n\r\nPlease visit &lt;activate_url&gt; to activate and edit your subscription.\r\n\r\nBest regards\r\nThe Editorial Office of Economics 
+    </value>
+    <value key="activated_subscriber_subject">eJournal: Activated</value>
+    <value key="activated_subscriber_email">Dear subscriber, \r\n\r\n
+        your e-mail &lt;email&gt; has been activated. You will now notified about new informations.\r\n\r\n
+        To edit you subscripton please visit &lt;edit_url&gt;. To delete your subscripiton please visit &lt;delete_url&gt;. \r\n\r\n
+        Best regards \r\n
+        Your eJournal Team
+    </value>
+    <value key="changed_subscriptions_subject">New papers in Economics</value>
+    <value key="changed_subscriptions_email">Dear subscriber to the alerting service of Economics,\r\n\r\nattached you will find new papers and articles in Economics.\r\n\r\n&lt;changed_papers&gt;\r\n\r\nTo edit your subscription please visit &lt;edit_url&gt;.\r\nTo delete your subscription please visit &lt;delete_url&gt;.\r\n\r\nBest regards\r\nThe Editorial Office of Economics'
+    </value>
+    <value key="changed_member_subscriptions_subject">New papers in Economics</value>
+    <value key="changed_member_subscriptions_email">Dear registered reader of Economics,\r\n\r\nattached you will find new contributions corresponding to your entered JEL classes.\r\n\r\nWe would be grateful if you could take part in the process of open assessment by uploading comments on the discussion papers or journal articles, or by simply clicking 'recommend' to mark the article as interesting.\r\n\r\nFurthermore, you are free to upload related links (e.g., links to papers, articles, research communities) to each discussion paper or article in Economics).\r\n\r\nPlease note that the comments may be posted anonymously.\r\n\r\n&lt;changed_papers&gt;\r\n\r\nTo edit your subscription please visit \r\n&lt;edit_url&gt;\r\n\r\nBest regards\r\n\r\nDennis Snower\r\n(Senior Editor - Economics. The Open-Access, Open-Assessment E-Journal)\r\n\r\nhttp://www.economics-ejournal.org\r\n
+    </value>
+-->
+</records>
 </registry>
 

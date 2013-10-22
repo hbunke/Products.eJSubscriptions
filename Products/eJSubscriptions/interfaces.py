@@ -1,4 +1,4 @@
-from zope.interface import Interface, Attribute
+from zope.interface import Interface
 from zope import schema
 
 
@@ -30,7 +30,13 @@ class ISubscriptionsConf(Interface):
             description = u'Will be used as subject for the activated subscriber mail.',
             required = True,
             )
-    
+
+    activated_subscriber_email = schema.Text(
+            title = u'Activated Subscriber E-Mail',
+            description = u'Will be used as text for the activated subscriber mail.',
+            required = True,
+            )
+
     changed_subscriptions_subject = schema.TextLine(
             title = u'Changed Papers Notification for Anonymous Subscribers Subject',
             description = u'Will be used as subject for changed subscriptions mail for anonymous subscribers.',
