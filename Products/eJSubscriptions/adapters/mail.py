@@ -6,7 +6,7 @@ from Products.AdvancedQuery import In, Eq, And, Ge
 from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
 # stripogram fuer paper-abstracts
-from Products.stripogram import html2text
+from stripogram import html2text
 
 
 class SubscriberNotification:
@@ -115,7 +115,7 @@ class SubscriberNotification:
         papers = [paper.getObject() for paper in papers]
 
         
-        # geändert 2007-12-06 HB. Alte Methode hat nur
+        # geaendert 2007-12-06 HB. Alte Methode hat nur
         # komplette JELs (A14) erfasst, nicht Oberkategorien wie "A"
         result_papers = []
 

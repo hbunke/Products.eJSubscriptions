@@ -5,7 +5,7 @@ from Products.Five.browser import BrowserView
 from zope.component import getUtility
 from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
-from zope.app.component.hooks import getSite
+from zope.component.hooks import getSite
 
 
 class IPortletView(Interface):

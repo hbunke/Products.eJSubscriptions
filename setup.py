@@ -57,6 +57,8 @@ setup(name='Products.eJSubscriptions',
       install_requires=['setuptools',
                         # -*- Extra requirements: -*-
                         'collective.autopermission',
+                        'Products.AdvancedQuery',
+                        'stripogram',
                         ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
