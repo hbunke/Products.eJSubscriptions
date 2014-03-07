@@ -7,6 +7,11 @@ from Products.eJSubscriptions.interfaces import IeJSubscriber
 from Products.eJSubscriptions.config import *
 
 from Products.CMFCore.utils import getToolByName
+from zope.component import getUtility
+from Products.eJournal.interfaces.utilities import IEjournalSettings
+
+
+
 
 schema = Schema((
     
@@ -77,8 +82,10 @@ class eJSubscriber(BaseContent):
     def _getJEL(self):
         """
         """
-        ejtool = getToolByName(self, "ejournal_tool")
-        return ejtool.getJELShort()
+        settings = getUtility(IEjournalSettings)
+        jels = settings.jels
+        return jels
+
 
     def setJel(self, value):
         """Overwritten to sort JEL classes.
