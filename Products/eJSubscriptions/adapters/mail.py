@@ -7,6 +7,7 @@ from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
 # stripogram fuer paper-abstracts
 from Products.stripogram import html2text
+from Products.eJournal import settings
 
 
 class SubscriberNotification:
@@ -27,8 +28,7 @@ class SubscriberNotification:
         registry = getUtility(IRegistry)
         stool = registry.forInterface(ISubscriptionsConf)
        
-        ejtool = getToolByName(self.context, "ejournal_tool")
-        sender = "from: %s\n" % ejtool.notification_from
+        sender = "from: %s\n" % settings.notification_from
         
         now = date.today()
         

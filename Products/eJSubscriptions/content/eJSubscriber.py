@@ -7,9 +7,9 @@ from Products.eJSubscriptions.interfaces import IeJSubscriber
 from Products.eJSubscriptions.config import *
 
 from Products.CMFCore.utils import getToolByName
-from zope.component import getUtility
-from Products.eJournal.interfaces.utilities import IEjournalSettings
-
+#from zope.component import getUtility
+#from Products.eJournal.interfaces.utilities import IEjournalSettings
+from Products.eJournal import settings
 
 
 
@@ -82,9 +82,7 @@ class eJSubscriber(BaseContent):
     def _getJEL(self):
         """
         """
-        settings = getUtility(IEjournalSettings)
-        jels = settings.jels
-        return jels
+        return settings.jels
 
 
     def setJel(self, value):

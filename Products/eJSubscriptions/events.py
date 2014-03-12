@@ -6,6 +6,7 @@ from zope.component import getUtility
 from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
 
+from Products.eJournal import settings
 
 
 class ISubscriberAdded(zope.interface.Interface):
@@ -52,7 +53,7 @@ def sendAddedMail(event):
     message = message.replace("<email>", object.getEmail())
     message = message.replace("<activate_url>", "%s/activate" % object.absolute_url())
         
-    header  = "From: %s\n" % ejtool.notification_from
+    header  = "From: %s\n" % settings.notification_from
     header += "To: %s\n"  % object.getEmail()
     header += "Subject: %s\n" % stool.added_subscriber_subject.encode('utf-8')
     header += "Content-Type: text/plain; charset=utf-8\n\n"
@@ -70,7 +71,6 @@ def sendActivatedMail(event):
     registry = getUtility(IRegistry)
     stool = registry.forInterface(ISubscriptionsConf)
 
-    #XXX Beware when moving ejtool to utility!!!
     ejtool = getToolByName(object, "ejournal_tool")    
     
     message = stool.activated_subscriber_email.encode('utf-8')
@@ -79,7 +79,7 @@ def sendActivatedMail(event):
     message = message.replace("<edit_url>", object.absolute_url())
     message = message.replace("<delete_url>", "%s/delete" % object.absolute_url())
     
-    header  = "from: %s\n" % ejtool.notification_from
+    header  = "from: %s\n" % settings.notification_from
     header += "to: %s\n"  % object.getEmail()
     header += "subject: %s\n" %  stool.activated_subscriber_subject.encode('utf-8')
     header += "Content-Type: text/plain; charset=utf-8\n\n"
