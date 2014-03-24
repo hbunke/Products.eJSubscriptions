@@ -1,7 +1,6 @@
 import zope
 
 # CMFCore imports
-from Products.CMFCore.utils import getToolByName
 from zope.component import getUtility
 from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
@@ -46,9 +45,6 @@ def sendAddedMail(event):
     registry = getUtility(IRegistry)
     stool = registry.forInterface(ISubscriptionsConf)
 
-    #XXX Beware when moving ejtool to utility!!!
-    ejtool = getToolByName(object, "ejournal_tool")    
-    
     message = stool.added_subscriber_email.encode('utf-8')
     message = message.replace("<email>", object.getEmail())
     message = message.replace("<activate_url>", "%s/activate" % object.absolute_url())
@@ -59,7 +55,6 @@ def sendAddedMail(event):
     header += "Content-Type: text/plain; charset=utf-8\n\n"
 
     mailtext = header+message
-    #import pdb; pdb.set_trace()
     object.MailHost.send(mailtext)
    
 
@@ -71,8 +66,6 @@ def sendActivatedMail(event):
     registry = getUtility(IRegistry)
     stool = registry.forInterface(ISubscriptionsConf)
 
-    ejtool = getToolByName(object, "ejournal_tool")    
-    
     message = stool.activated_subscriber_email.encode('utf-8')
     
     message = message.replace("<email>", object.getEmail())
