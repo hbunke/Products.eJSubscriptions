@@ -6,7 +6,7 @@ from Products.AdvancedQuery import In, Eq, And, Ge
 from Products.eJSubscriptions.interfaces import ISubscriptionsConf
 from plone.registry.interfaces import IRegistry
 # stripogram fuer paper-abstracts
-from Products.stripogram import html2text
+from stripogram import html2text
 from Products.eJournal import settings
 
 
